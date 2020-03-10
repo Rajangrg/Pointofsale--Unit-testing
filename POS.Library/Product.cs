@@ -9,6 +9,8 @@ namespace POS.Library
     public class Product
     {
         protected string productName;
+        protected int productQuantity;
+        protected decimal productPrice;
 
 
         public void SetProductName(string productName)
@@ -19,6 +21,26 @@ namespace POS.Library
         public string GetProductName()
         {
             return productName;
+        }
+
+        public void SetProductQuantity(int productQuantity)
+        {
+            this.productQuantity = productQuantity;
+        }
+
+        public int GetProductQuantity()
+        {
+            return productQuantity;
+        }
+
+        public void SetProductPrice(decimal productPrice)
+        {
+            this.productPrice = productPrice;
+        }
+
+        public decimal GetProductPrice()
+        {
+            return productPrice;
         }
     }
 }

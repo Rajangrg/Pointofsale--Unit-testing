@@ -23,5 +23,36 @@ namespace POS.Library.Tests
             //Assert
             Assert.AreEqual("A", result);
         }
+
+        [Test]
+        public void GetProductQuantity()
+        {
+            //Arrange
+            Product product = new Product();
+
+            //Act
+            product.SetProductQuantity(5);
+            int result = product.GetProductQuantity();
+
+            //Assert
+            Assert.AreEqual(5, result);
+        }
+
+
+        [Test]
+        public void GetProductPrice()
+        {
+            //Arrange
+            Product product = new Product();
+
+            //Act
+            product.SetProductPrice(5);
+            decimal result = product.GetProductPrice();
+
+            //Assert
+            Assert.AreEqual(5, result);
+        }
+
+
     }
 }
