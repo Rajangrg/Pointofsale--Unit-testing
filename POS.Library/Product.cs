@@ -10,7 +10,15 @@ namespace POS.Library
     {
         protected string productName;
         protected int productQuantity;
-        protected decimal productPrice;
+        protected double productPrice;
+
+        //constructor 
+        public Product(string productName, int productQuantity, double productPrice)
+        {
+            this.productName = productName;
+            this.productQuantity = productQuantity;
+            this.productPrice = productPrice;
+        }
 
 
         public void SetProductName(string productName)
@@ -33,12 +41,12 @@ namespace POS.Library
             return productQuantity;
         }
 
-        public void SetProductPrice(decimal productPrice)
+        public void SetProductPrice(double productPrice)
         {
             this.productPrice = productPrice;
         }
 
-        public decimal GetProductPrice()
+        public double GetProductPrice()
         {
             return productPrice;
         }

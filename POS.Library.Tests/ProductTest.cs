@@ -14,10 +14,9 @@ namespace POS.Library.Tests
         public void GetProductName()
         {
             //Arrange
-            Product product = new Product();
+            Product product = new Product("A", 1, 1.25);
 
             //Act
-            product.SetProductName("A");
             string result = product.GetProductName();
 
             //Assert
@@ -28,10 +27,9 @@ namespace POS.Library.Tests
         public void GetProductQuantity()
         {
             //Arrange
-            Product product = new Product();
+            Product product = new Product("B", 5, 4.25);
 
             //Act
-            product.SetProductQuantity(5);
             int result = product.GetProductQuantity();
 
             //Assert
@@ -43,16 +41,33 @@ namespace POS.Library.Tests
         public void GetProductPrice()
         {
             //Arrange
-            Product product = new Product();
+            Product product = new Product("C", 1, 1);
 
             //Act
-            product.SetProductPrice(5);
-            decimal result = product.GetProductPrice();
+            double result = product.GetProductPrice();
 
             //Assert
-            Assert.AreEqual(5, result);
+            Assert.AreEqual(1, result);
         }
 
+
+        [Test]
+        public void GetProductDescription()
+        {
+            //Arrange
+            Product product = new Product("D", 1, 0.75);
+
+            //Act
+            string productNameResult = product.GetProductName();
+            int prductQuantityResult = product.GetProductQuantity();
+            double productPriceResult = product.GetProductPrice();
+
+
+            //Assert
+            Assert.AreEqual("D", productNameResult);
+            Assert.AreEqual(1, prductQuantityResult);
+            Assert.AreEqual(0.75, productPriceResult);
+        }
 
     }
 }
