@@ -83,7 +83,7 @@ namespace POS.Library
                 {
                     for (int i = 0; i < ItemCount(); i++)
                     {
-                        cProductQuantity += item.GetProductQuantity(); // from Product class
+                        cProductQuantity += item.GetProductQuantity(); 
 
                     }
                     totalPriceWithoutDiscountForC = cProductQuantity * perUnitPriceForC;
@@ -112,7 +112,7 @@ namespace POS.Library
                 {
                     for (int i = 0; i < ItemCount(); i++)
                     {
-                        aProductQuantity += item.GetProductQuantity(); // from Product class
+                        aProductQuantity += item.GetProductQuantity(); 
 
                     }
                     totalPriceWithoutDiscountForA = aProductQuantity * perUnitPriceForA;
