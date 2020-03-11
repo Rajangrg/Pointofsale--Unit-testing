@@ -98,5 +98,71 @@ namespace POS.Library.Tests
             Assert.AreEqual(14, result);
         }
 
+
+        //---------after discount total amount------
+
+
+        [Test] //Given input to check
+        public void TotalPriceAfterDiscountForFourdifferentProduct()
+        {
+            //Arrange
+            PointOfSaleTerminal pointOfSale = new PointOfSaleTerminal();
+            Product A = new Product("A", 1, 1.25);
+            Product B = new Product("B", 1, 4.25);
+            Product C = new Product("C", 1, 1.00);
+            Product D = new Product("D", 1, 0.75);
+
+            //Act
+            pointOfSale.ScanProduct(A);
+            pointOfSale.ScanProduct(B);
+            pointOfSale.ScanProduct(C);
+            pointOfSale.ScanProduct(D);
+
+            double result = pointOfSale.CalculateTotal();
+
+            //Assert
+            Assert.AreEqual(7.25, result);
+        }
+
+
+        [Test] //Given input to check
+        public void TotalPriceAfterDiscountForSevenSameProduct()
+        {
+            //Arrange
+            PointOfSaleTerminal pointOfSale = new PointOfSaleTerminal();
+            Product C = new Product("C", 7, 1);
+
+            //Act
+            pointOfSale.ScanProduct(C);
+            double result = pointOfSale.CalculateTotal();
+
+            //Assert
+            Assert.AreEqual(6, result);
+        }
+
+
+        [Test] //Given input to check
+        public void TotalPriceAfterDiscountForDifferentOrMoreThanOneSameProduct()
+        {
+            //Arrange
+            PointOfSaleTerminal pointOfSale = new PointOfSaleTerminal();
+            Product A = new Product("A", 3, 1.25);
+            Product B = new Product("B", 2, 4.25);
+            Product C = new Product("C", 1, 1.00);
+            Product D = new Product("D", 1, 0.75);
+
+
+            //Act
+            pointOfSale.ScanProduct(A);
+            pointOfSale.ScanProduct(B);
+            pointOfSale.ScanProduct(C);
+            pointOfSale.ScanProduct(D);
+
+
+            double result = pointOfSale.CalculateTotal();
+
+            //Assert
+            Assert.AreEqual(13.25, result);
+        }
     }
 }

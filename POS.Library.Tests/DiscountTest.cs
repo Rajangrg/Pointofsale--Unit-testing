@@ -25,7 +25,7 @@ namespace POS.Library.Tests
            
             //Assert
 
-            Assert.AreEqual(5, pointOfSale.DiscountForC("C"));
+            Assert.AreEqual(1, pointOfSale.DiscountForC("C"));
             //Assert.AreEqual(10, pointOfSale.DiscountForC("C"));
         }
 

@@ -10,6 +10,7 @@ namespace POS.Library
     {
         public List<Product> items; //for stroing items or scanned items
         protected double totalValueBeforeDiscount;
+        protected double totalValueAfterDiscount;
 
 
         //product C discount details
@@ -47,9 +48,8 @@ namespace POS.Library
         }
 
         public double GetTotalPriceBeforeDiscount()
-        {
+        {  
             //foreach gives permisssion to access the method of product
-            // it is similar to creating an object of product
             foreach (var item in this.items)
             {
                 totalValueBeforeDiscount =( totalValueBeforeDiscount + (item.GetProductQuantity() * item.GetProductPrice()));
@@ -57,6 +57,17 @@ namespace POS.Library
             return totalValueBeforeDiscount;
         }
 
+
+        public double CalculateTotal()
+        {
+            if (ItemCount() > 0) //validation
+            {
+                totalPriceForC = DiscountForC("C");
+                totalPriceForA = DiscountForA("A");
+                totalValueAfterDiscount = (GetTotalPriceBeforeDiscount() - (totalPriceForC - totalPriceForA)); //
+            }
+            return totalValueAfterDiscount;
+        }
 
 
 
@@ -79,7 +90,7 @@ namespace POS.Library
 
                     if (cProductQuantity >= 6)
                     {
-                        totalPriceForC = Math.Round((totalPriceWithoutDiscountForC) - ((totalPriceWithoutDiscountForC * cDiscountPrice) / 100));
+                        totalPriceForC = Math.Round( (totalPriceWithoutDiscountForC * cDiscountPrice) / 100);
                     }
                     else
                     {
@@ -108,8 +119,9 @@ namespace POS.Library
 
                     if (aProductQuantity >= 3)
                     {
-                        totalPriceForA = Math.Round((totalPriceWithoutDiscountForA) - ((totalPriceWithoutDiscountForA * aDiscountPrice) / 100));       
+                        totalPriceForA = Math.Round((totalPriceWithoutDiscountForA) -((totalPriceWithoutDiscountForA * aDiscountPrice) / 100));       
                     }
+                 
                     else
                     {
                         totalPriceForA = totalPriceWithoutDiscountForA;
