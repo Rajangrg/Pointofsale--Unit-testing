@@ -23,6 +23,7 @@ namespace POS.Library.Tests
             //Assert
             Assert.AreEqual(0, result);
         }
+
         [Test]
         public void ItemIsAddedOnPointOfSaleTerminal()
         {
@@ -38,7 +39,7 @@ namespace POS.Library.Tests
             Assert.AreEqual(1, result);
         }
 
-        [Test]
+        [Test] //Given input to check
         public void TotalPriceBeforeDiscountForFourdifferentProduct()
         {
             //Arrange
@@ -60,6 +61,42 @@ namespace POS.Library.Tests
             Assert.AreEqual(7.25, result);
         }
 
+        [Test] //Given input to check
+        public void TotalPriceBeforeDiscountForSevenSameProduct()
+        {
+            //Arrange
+            PointOfSaleTerminal pointOfSale = new PointOfSaleTerminal();
+            Product C = new Product("C", 7, 1);
+
+            //Act
+            pointOfSale.ScanProduct(C);
+            double result = pointOfSale.GetTotalPriceBeforeDiscount();
+
+            //Assert
+            Assert.AreEqual(7, result); 
+        }
+
+        [Test] //Given input to check
+        public void TotalPriceBeforeDiscountForDifferentOrMoreThanOneSameProduct()
+        {
+            //Arrange
+            PointOfSaleTerminal pointOfSale = new PointOfSaleTerminal();
+            Product A = new Product("A", 3, 1.25);
+            Product B = new Product("B", 2, 4.25);
+            Product C = new Product("C", 1, 1.00);
+            Product D = new Product("D", 1, 0.75);
+
+            //Act
+            pointOfSale.ScanProduct(A);
+            pointOfSale.ScanProduct(B);
+            pointOfSale.ScanProduct(C);
+            pointOfSale.ScanProduct(D);
+
+            double result = pointOfSale.GetTotalPriceBeforeDiscount();
+
+            //Assert
+            Assert.AreEqual(14, result);
+        }
 
     }
 }
