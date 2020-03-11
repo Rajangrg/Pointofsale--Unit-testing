@@ -8,8 +8,17 @@ namespace POS.Library
 {
     public class PointOfSaleTerminal
     {
-        protected List<Product> items; //for stroing items 
+        public List<Product> items; //for stroing items 
         protected double totalValueBeforeDiscount;
+
+
+        //product C discount details -- refactor create seprate class
+        protected int cProductQuantity;
+        protected double totalPriceWithoutDiscountForC = 0;
+        protected double totalPriceForC = 0;
+        protected int perUnitPriceForC = 1;
+        protected double cDiscountPrice = 16.667; // in percentage
+
 
         //constructor
         public PointOfSaleTerminal()
@@ -37,5 +46,42 @@ namespace POS.Library
             }
             return totalValueBeforeDiscount;
         }
+
+
+        // Discount  -- refactor later 
+
+        public double DiscountForC(string productName)
+        {
+
+            foreach (var item in this.items)
+            {
+                if (item.GetProductName() == productName)
+                {
+                    for (int i = 0; i < ItemCount(); i++)
+                    {
+                        cProductQuantity += item.GetProductQuantity(); // from Product class
+
+                    }
+                    totalPriceWithoutDiscountForC = cProductQuantity * 1;
+
+                    if (cProductQuantity >= 6)
+                    {
+                        totalPriceForC = Math.Round((totalPriceWithoutDiscountForC) - ((totalPriceWithoutDiscountForC * cDiscountPrice) / 100));
+                        //totalPriceForC = (totalPriceForWithoutDiscountforC) - ((totalPriceForWithoutDiscountforC * cDscountPrice) / 100);
+                    }
+               
+                    else
+                    {
+                        totalPriceForC = totalPriceWithoutDiscountForC;
+                    }
+                }
+
+            }
+
+            return totalPriceForC; //total sum
+        }
+
+
+
     }
 }

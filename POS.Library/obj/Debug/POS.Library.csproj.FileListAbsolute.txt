@@ -1,5 +1,4 @@
 D:\Project\POS\POS.Library\bin\Debug\POS.Library.dll
 D:\Project\POS\POS.Library\bin\Debug\POS.Library.pdb
-D:\Project\POS\POS.Library\obj\Debug\POS.Library.csprojAssemblyReference.cache
 D:\Project\POS\POS.Library\obj\Debug\POS.Library.dll
 D:\Project\POS\POS.Library\obj\Debug\POS.Library.pdb
